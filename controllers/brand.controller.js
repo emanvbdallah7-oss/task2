@@ -1,7 +1,6 @@
 const Brand = require("../models/brand.model");
 const slugify = require("slugify");
 
-// Create Brand
 exports.createBrand = async (req, res) => {
   const { name, image } = req.body;
 
@@ -17,7 +16,6 @@ exports.createBrand = async (req, res) => {
   res.status(201).json(brand);
 };
 
-// Get All
 exports.getBrands = async (req, res) => {
   const { page = 1, limit = 10, search = "" } = req.query;
 
@@ -31,7 +29,6 @@ exports.getBrands = async (req, res) => {
   res.json(brands);
 };
 
-// Get One (by id or slug)
 exports.getBrand = async (req, res) => {
   const { id } = req.params;
 
@@ -44,7 +41,6 @@ exports.getBrand = async (req, res) => {
   res.json(brand);
 };
 
-// Update
 exports.updateBrand = async (req, res) => {
   const { name, image } = req.body;
 
@@ -62,7 +58,6 @@ exports.updateBrand = async (req, res) => {
   res.json(brand);
 };
 
-// Delete
 exports.deleteBrand = async (req, res) => {
   await Brand.findByIdAndDelete(req.params.id);
   res.json({ message: "Deleted" });
